@@ -1,9 +1,10 @@
 // ini untuk jalanin / entry point server
 import app from '../app.js';
 
-const PORT = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
+const host = process.env.HOST || 'localhost'
 
-app.listen(PORT, () => {
-  console.log(`Server berjalan di port ${PORT}`);
+app.listen(port, host, () => {
+    console.log(`Running on ${port}`);
 });
   
