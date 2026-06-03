@@ -1,4 +1,6 @@
-#!/Users/mac/Desktop/DBS/Backend-DBS/Flask/.venv/bin/python3.12
+#!/bin/sh
+'''exec' "/Users/mac/Desktop/SmartFinance - DBS/Backend-DBS/Flask/.venv/bin/python" "$0" "$@"
+' '''
 # -*- coding: utf-8 -*-
 import re
 import sys
