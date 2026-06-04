@@ -8,7 +8,7 @@ const router = express.Router();
 router.use('/users', userRoutes);
 router.use('/authentications', authRoutes);
 router.use('/documents', documentRoutes);
-router.use('/predict')
+//router.use('/predict')
 
 
 export default router
