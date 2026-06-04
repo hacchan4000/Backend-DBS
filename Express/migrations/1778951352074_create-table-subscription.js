@@ -10,11 +10,12 @@ export const shorthands = undefined;
  * @returns {Promise<void> | void}
  */
 export const up = (pgm) => {
-  pgm.createTable('users', {
+  pgm.createTable('subscription', {
     id:{ type: 'VARCHAR(50)', primaryKey: true},
-    name:{ type: 'TEXT', notNull: true},
-    email:{  type: 'TEXT', unique: true, notNull: true },
-    password:{  type: 'TEXT', notNull: true  },
+    user_id:{ type: 'VARCHAR(50)', notNull: true ,references: 'users(id)'}, 
+    subscription_name:{ type: 'TEXT', notNull: true},
+    subscription_start_date:{ type: 'TEXT', notNull: true},
+    price:{},  
   })
 };
 
