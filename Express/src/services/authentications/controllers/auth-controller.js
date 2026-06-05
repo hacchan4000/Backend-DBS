@@ -27,7 +27,7 @@ export const login = async(req,res,next)=>{
     }
 
     // token HARUS simpan id user asli
-    const accessToken =
+    const access_token =
       TokenManager.generateAccessToken({
         id:userId
       });
@@ -46,7 +46,7 @@ export const login = async(req,res,next)=>{
       200,
       'Login berhasil',
       {
-        accessToken,
+        access_token,
         refreshToken
       }
     );

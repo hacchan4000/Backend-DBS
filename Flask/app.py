@@ -6,10 +6,24 @@ import os
 
 app=Flask(__name__)
 
-UPLOAD_FOLDER='uploads'
+
+UPLOAD_FOLDER = os.environ.get(
+    "UPLOAD_FOLDER",
+    "uploads"
+)
+
+TEMP_FOLDER = os.environ.get(
+    "TEMP_FOLDER",
+    "temp"
+)
 
 os.makedirs(
     UPLOAD_FOLDER,
+    exist_ok=True
+)
+
+os.makedirs(
+    TEMP_FOLDER,
     exist_ok=True
 )
 
