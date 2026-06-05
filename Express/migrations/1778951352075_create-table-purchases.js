@@ -29,5 +29,5 @@ export const up = (pgm) => {
 
  */
 export const down = (pgm) => {
-  pgm.dropTable('users');
+  pgm.dropTable('purchases');
 };
