@@ -25,8 +25,11 @@
     "jsonwebtoken": "^9.0.3",
     "multer": "^2.1.1",
     "nanoid": "^5.1.11",
+    "next": "^16.2.7",
     "node-pg-migrate": "^8.0.4",
     "pg": "^8.21.0",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
     "redis": "^6.0.0"
   },
   "devDependencies": {
