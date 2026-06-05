@@ -1,10 +1,10 @@
-from flask import Flask, request 
+from flask import Flask, request, jsonify
 from predictor import predict
 from utils.pdf_parser import pdf_to_dataframe
+from werkzeug.utils import secure_filename
 import os
 
-app=Flask(__name__)
-
+app = Flask(__name__)
 
 UPLOAD_FOLDER = os.environ.get(
     "UPLOAD_FOLDER",
@@ -26,29 +26,74 @@ os.makedirs(
     exist_ok=True
 )
 
-@app.route("/predict",methods=["POST"])
+app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
+
+
+@app.route("/")
+def hello_world():
+    return jsonify({
+        "message": "Flask API running successfully"
+    })
+
+
+@app.route("/predict", methods=["POST"])
 def prediction():
 
-    file=request.files['file']
+    try:
 
-    filepath=os.path.join(
-        UPLOAD_FOLDER,
-        file.filename
-    )
+        # cek file ada atau tidak
+        if 'file' not in request.files:
+            return jsonify({
+                "error": "No file uploaded"
+            }), 400
 
-    file.save(filepath)
+        file = request.files['file']
 
-    df=pdf_to_dataframe(
-        filepath
-    )
+        # cek nama file kosong
+        if file.filename == '':
+            return jsonify({
+                "error": "Empty filename"
+            }), 400
 
-    result=predict(df)
+        # amankan nama file
+        filename = secure_filename(
+            file.filename
+        )
 
-    return {
-        "prediction":result
-    }
+        filepath = os.path.join(
+            app.config["UPLOAD_FOLDER"],
+            filename
+        )
 
-if __name__=="__main__":
+        # simpan file
+        file.save(filepath)
+
+        # convert pdf -> dataframe
+        df = pdf_to_dataframe(
+            filepath
+        )
+
+        # jalankan model
+        result = predict(df)
+
+        # hapus file sementara
+        if os.path.exists(filepath):
+            os.remove(filepath)
+
+        return jsonify({
+            "prediction": result
+        })
+
+
+    except Exception as e:
+
+        return jsonify({
+            "error": str(e)
+        }), 500
+
+
+if __name__ == "__main__":
+
     app.run(
         host="0.0.0.0",
         port=int(
