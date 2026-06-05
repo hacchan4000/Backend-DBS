@@ -1,5 +1,4 @@
-from flask import Flask
-from flask import request
+from flask import Flask, request 
 from predictor import predict
 from utils.pdf_parser import pdf_to_dataframe
 import os
