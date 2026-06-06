@@ -23,11 +23,10 @@
     "jsonwebtoken": "^9.0.3",
     "nanoid": "^5.1.11",
     "node-pg-migrate": "^8.0.4",
-    "pg": "^8.20.0"
+    "pg": "^8.21.0"
   },
   "devDependencies": {
     "@types/pg": "^8.20.0",
     "nodemon": "^3.1.14"
   }
 }
-
