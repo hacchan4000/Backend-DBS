@@ -1,10 +1,12 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from predictor import predict
 from utils.pdf_parser import pdf_to_dataframe
 from werkzeug.utils import secure_filename
 import os
 
 app = Flask(__name__)
+CORS(app)
 
 UPLOAD_FOLDER = os.environ.get(
     "UPLOAD_FOLDER",
@@ -27,7 +29,6 @@ os.makedirs(
 )
 
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
-
 
 @app.route("/")
 def hello_world():
