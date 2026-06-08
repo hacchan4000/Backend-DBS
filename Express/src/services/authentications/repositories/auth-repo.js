@@ -20,7 +20,7 @@ class AuthRepo {
     if (!verifyPass) {
       return null;
     }
-    return user.id
+    return user
     
   }
   async Register(userId,token) {

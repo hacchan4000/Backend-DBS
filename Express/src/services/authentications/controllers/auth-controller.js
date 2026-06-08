@@ -12,13 +12,14 @@ export const login = async(req,res,next)=>{
       password
     } = req.validate;
 
-    const userId =
+    const user =
       await authRepo.SearchUser({
         email,
         password
       });
+    
 
-    if(!userId){
+    if(!user.id){
       return next(
         new AuthenticationError(
           'Email atau password salah'
@@ -29,16 +30,16 @@ export const login = async(req,res,next)=>{
     // token HARUS simpan id user asli
     const access_token =
       TokenManager.generateAccessToken({
-        id:userId
+        id:user.id
       });
 
     const refreshToken =
       TokenManager.generateRefreshToken({
-        id:userId
+        id:user.id
       });
 
     await authRepo.Register(
-      userId,
+      user.id,
       refreshToken
     );
 
@@ -47,6 +48,7 @@ export const login = async(req,res,next)=>{
       200,
       'Login berhasil',
       {
+        name:user.name,
         access_token,
         refreshToken
       }
