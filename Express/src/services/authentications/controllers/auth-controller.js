@@ -38,6 +38,7 @@ export const login = async(req,res,next)=>{
       });
 
     await authRepo.Register(
+      userId,
       refreshToken
     );
 

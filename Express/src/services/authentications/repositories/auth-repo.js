@@ -23,15 +23,15 @@ class AuthRepo {
     return user.id
     
   }
-  async Register(token) {
+  async Register(userId,token) {
     const id = nanoid(16)
     const query = {
       text: `
-    INSERT INTO authentications (id, token)
-    VALUES ($1, $2)
+    INSERT INTO authentications (id, user_id, token)
+    VALUES ($1, $2, $3)
     RETURNING *
   `,
-      values:[id,token]
+      values:[id,userId,token]
     }
     const result= await pool.query(query);
 
