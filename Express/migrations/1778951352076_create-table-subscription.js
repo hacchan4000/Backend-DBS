@@ -14,8 +14,9 @@ export const up = (pgm) => {
     id:{ type: 'VARCHAR(50)', primaryKey: true},
     user_id:{ type: 'VARCHAR(50)', notNull: true ,references: 'users(id)'}, 
     subscription_name:{ type: 'TEXT', notNull: true},
-    subscription_start_date:{ type: 'TEXT', notNull: true},
-    price:{type: 'TEXT', notNull: true},  
+    subscription_start_date:{ type: 'DATE', notNull: true},
+    subscription_end_date:{ type: 'DATE', notNull: true},
+    price:{type: 'NUMERIC(15,2)', notNull: true},  
   })
 };
 

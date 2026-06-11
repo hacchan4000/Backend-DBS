@@ -13,10 +13,10 @@ export const up = (pgm) => {
   pgm.createTable('purchases', {
     id:{ type: 'VARCHAR(50)', primaryKey: true},
     user_id:{ type: 'VARCHAR(50)', notNull: true ,references: 'users(id)'}, 
+    title:{ type: 'TEXT', notNull: true},
     category_id:{ type: 'VARCHAR(50)', notNull: true ,references: 'categories(id)'}, 
-    purchase_name:{ type: 'TEXT', notNull: true},
-    purchase_date:{ type: 'TEXT', notNull: true},
-    price:{ type: 'TEXT', notNull: true},
+    date:{ type: 'DATE', notNull: true},
+    price:{ type: 'NUMERIC(15,2)', notNull: true},
   
   })
 };
