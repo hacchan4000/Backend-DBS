@@ -1,5 +1,5 @@
 import response from "../../../utils/response.js"
-import purchaseRepo from "../repositories/purchase-repo"
+import purchaseRepo from "../repositories/purchase-repo.js"
 
 export const create = async(req, res, next) => {
   try {
