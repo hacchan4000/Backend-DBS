@@ -14,7 +14,7 @@ router.post(
 );
 
 router.get(
-  '/',
+  '/:user_id',
   read
 );
 router.put(

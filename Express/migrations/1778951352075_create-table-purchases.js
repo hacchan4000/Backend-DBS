@@ -16,8 +16,7 @@ export const up = (pgm) => {
     title:{ type: 'TEXT', notNull: true},
     category_id:{ type: 'VARCHAR(50)', notNull: true ,references: 'categories(id)'}, 
     date:{ type: 'DATE', notNull: true},
-    price:{ type: 'NUMERIC(15,2)', notNull: true},
-  
+    price:{ type: 'NUMERIC(15,2)', notNull: true}
   })
 };
 
