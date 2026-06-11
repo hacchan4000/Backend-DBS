@@ -48,6 +48,7 @@ export const login = async(req,res,next)=>{
       200,
       'Login berhasil',
       {
+        id:user.id,
         name:user.name,
         access_token,
         refreshToken
