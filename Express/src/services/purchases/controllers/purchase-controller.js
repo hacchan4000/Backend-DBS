@@ -1,4 +1,4 @@
-import response from "../../../utils/response"
+import response from "../../../utils/response.js"
 import purchaseRepo from "../repositories/purchase-repo"
 
 export const create = async(req, res, next) => {
