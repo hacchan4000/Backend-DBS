@@ -15,7 +15,7 @@ export const create = async(req, res, next) => {
 }
 export const read = async(req, res, next) => {
   try {
-    const { user_id } = req.params
+    const { user_id } = req.query
     const hasil = await purchaseRepo.readUser(user_id)
     return response( res, 200, 'Berhasil mengambil purchase', hasil );
   } catch (error) {
