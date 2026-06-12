@@ -5,10 +5,10 @@ import { nanoid } from 'nanoid';
 class PurchaseRepo {
   create = async(body) => {
     const id = nanoid(16)
-    const { user_id, title, category, date, price} = body
+    const { user_id, title, category_id, date, price} = body
     const query = {
       text:"INSERT INTO purchases (id,user_id,title,category_id,date,price) VALUES ($1,$2,$3,$4,$5,$6) RETURNING *",
-      values:[id,user_id, title, category, date, price]
+      values:[id,user_id, title, category_id, date, price]
     }
     const res = await pool.query(query)
     return res.rows[0]
